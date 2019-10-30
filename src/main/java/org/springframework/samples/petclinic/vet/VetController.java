@@ -27,16 +27,16 @@ import java.util.Map;
  * @author Ken Krebs
  * @author Arjen Poutsma
  */
-@Controller
+@RestController
 class VetController {
-
-    private final VetRepository vets;
+    @Autowired
+    VetRepository vets;
 
     public VetController(VetRepository clinicService) {
         this.vets = clinicService;
     }
 
-    @GetMapping("/vets.html")
+    @GetMapping("/vets")
     public String showVetList(Map<String, Object> model) {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet
         // objects so it is simpler for Object-Xml mapping
